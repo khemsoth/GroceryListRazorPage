@@ -5,16 +5,15 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
-<h4>Grocery</h4>
+<h3>Add a New Item</h3>
+<p>* Required</p>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Grocery.ItemName" class="control-label"></label>
+                <label asp-for="Grocery.ItemName" class="control-label">Item*</label>
                 <input asp-for="Grocery.ItemName" class="form-control" />
                 <span asp-validation-for="Grocery.ItemName" class="text-danger"></span>
             </div>
@@ -25,7 +24,13 @@
             </div>
             <div class="form-group">
                 <label asp-for="Grocery.Unit" class="control-label"></label>
-                <input asp-for="Grocery.Unit" class="form-control" />
+                <select asp-for="Grocery.Unit" class="form-control">
+                  <option value="" selected></option>
+                  <option value="Ounces">Ounces</option>
+                  <option value="Gallons">Gallons</option>
+                  <option value="Pounds">Pounds</option>
+                  <option value="Packs">Packs</option>
+                </select>
                 <span asp-validation-for="Grocery.Unit" class="text-danger"></span>
             </div>
             <div class="form-group">
