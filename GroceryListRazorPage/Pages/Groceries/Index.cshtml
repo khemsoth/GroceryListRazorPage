@@ -2,47 +2,56 @@
 @model GroceryListRazorPage.Pages.Groceries.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+  ViewData["Title"] = "Index";
 }
 
 <h1>Groceries</h1>
 
 <p>
-    <a asp-page="Create">Add New Item</a>
+  <a asp-page="Create">Add New Item</a>
 </p>
 <table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Grocery[0].ItemName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Grocery[0].Quantity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Grocery[0].Unit)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Grocery) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ItemName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Unit)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
+  <thead>
+    <tr>
+      <th>
+        <input type="checkbox" onclick="checkStatus" checked disabled />
+      </th>
+      <th>
+        @Html.DisplayNameFor(model => model.Grocery[0].ItemName)
+      </th>
+      <th>
+        @Html.DisplayNameFor(model => model.Grocery[0].Quantity)
+      </th>
+      <th>
+        @Html.DisplayNameFor(model => model.Grocery[0].Unit)
+      </th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var item in Model.Grocery)
+    {
+      <tr>
+        <td>
+          <div>
+            <input type="checkbox" />
+          </div>
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.ItemName)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.Unit)
+        </td>
+        <td>
+          <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+          <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+          <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+        </td>
+      </tr>
+    }
+  </tbody>
 </table>
